@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAO {
-    private static final String INSERT_STUDENTS_SQL = "INSERT INTO students (name, email, age, department_id, course) VALUES (?, ?, ?, ?, ?);";//SQL-Injection
+    private static final String INSERT_STUDENTS_SQL = "INSERT INTO students (name, email, age, department_id, course) VALUES (?, ?, ?, ?, ?);";
     private static final String SELECT_STUDENT_BY_ID = "SELECT id, name, email, age, department_id, course FROM students WHERE id =?;";
     private static final String SELECT_ALL_STUDENTS = "SELECT * FROM students;";
     private static final String DELETE_STUDENTS_SQL = "DELETE FROM students WHERE id = ?;";
     private static final String UPDATE_STUDENTS_SQL = "UPDATE students SET name = ?, email= ?, age =?, department_id =?, course =? WHERE id = ?;";
-//JDBC -> Connection, PreparedStatement, Statement, CallableStatement, Resultset(Select)
+
     public void insertStudent(Student student) throws SQLException {
         try (Connection connection = DBUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STUDENTS_SQL)) {//try with resources
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STUDENTS_SQL)) {
             preparedStatement.setString(1, student.getName());
             preparedStatement.setString(2, student.getEmail());
             preparedStatement.setInt(3, student.getAge());

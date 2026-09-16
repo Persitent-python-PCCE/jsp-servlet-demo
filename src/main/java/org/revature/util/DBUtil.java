@@ -20,6 +20,3 @@ public class DBUtil {
         return connection;
     }
 }
-
-//mysql-connector-j => JDBC
-// Connection, Statement, PreparedStatements, CallableStatements, ResultSet
